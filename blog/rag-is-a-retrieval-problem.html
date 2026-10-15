@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RAG isn't a model problem, it's a retrieval problem — Ali Ahmed Awan</title>
+<title>RAG isn't a model problem, it's a retrieval problem · Ali Ahmed Awan</title>
 <meta name="description" content="Teams spend weeks arguing about which model to put behind their RAG pipeline and an afternoon on the retrieval step that actually decides whether the model ever sees the right document.">
 <link rel="stylesheet" href="../assets/styles.css">
 </head>
@@ -38,31 +38,31 @@
 </div>
 <div class="post-body">
 
-<p>In almost every AI-training session I've run for teams putting retrieval-augmented generation into production, the conversation starts in the wrong place: which model should sit at the end of the pipeline — Claude, GPT, Gemini. By the end of the session, we're almost always talking about something upstream of the model entirely, because that's reliably where the actual failures were happening.</p>
+<p>In almost every AI-training session I've run for teams putting retrieval-augmented generation into production, the conversation starts in the wrong place: which model should sit at the end of the pipeline (Claude, GPT, Gemini). By the end of the session, we're almost always talking about something upstream of the model entirely, because that's reliably where the actual failures were happening.</p>
 
 <h2>Where the failures actually live</h2>
 
-<p>A RAG system has, roughly, three places to fail: the retrieval step finds the wrong (or an incomplete) set of documents, the model reasons poorly over documents that were actually correct, or the output is right but phrased in a way nobody trusts. In every production system I've debugged, the overwhelming majority of visible failures trace back to the first one — retrieval handed the model a plausible-looking but wrong or incomplete paragraph, and the model, doing exactly what it's supposed to do, reasoned confidently from bad input.</p>
+<p>A RAG system has, roughly, three places to fail: the retrieval step finds the wrong (or an incomplete) set of documents, the model reasons poorly over documents that were actually correct, or the output is right but phrased in a way nobody trusts. In every production system I've debugged, the overwhelming majority of visible failures trace back to the first one. Retrieval handed the model a plausible-looking but wrong or incomplete paragraph, and the model, doing exactly what it's supposed to do, reasoned confidently from bad input.</p>
 
-<blockquote>A great model reasoning over the wrong paragraph will produce a fluent, confident, wrong answer faster than a mediocre model would have. Model quality doesn't fix a retrieval problem — it makes a retrieval problem harder to notice.</blockquote>
+<blockquote>A great model reasoning over the wrong paragraph will produce a fluent, confident, wrong answer faster than a mediocre model would have. Model quality doesn't fix a retrieval problem. It makes a retrieval problem harder to notice.</blockquote>
 
 <h2>What actually improves retrieval, in order of how often it mattered</h2>
 
 <ul>
 <li><strong>Chunking that respects the document's real structure</strong>, not a fixed token count that slices a clause in half. Most of the "the model hallucinated a policy detail" complaints I've debugged were actually "the policy detail was split across two chunks and only one got retrieved."</li>
-<li><strong>Hybrid search, not pure semantic similarity.</strong> Exact terms — product names, account numbers, specific clause references — often need keyword matching that pure embedding similarity quietly deprioritizes in favor of "related-sounding" text.</li>
+<li><strong>Hybrid search, not pure semantic similarity.</strong> Exact terms (product names, account numbers, specific clause references) often need keyword matching that pure embedding similarity quietly deprioritizes in favor of "related-sounding" text.</li>
 <li><strong>Re-ranking before the model ever sees the candidates</strong>, so the five documents that actually reach the prompt are the five most relevant, not the five that happened to embed closest to the query.</li>
-<li><strong>Routing by query type</strong>, a lot like the model-routing I've written about for cost — a factual lookup and an open-ended reasoning question don't need the same retrieval depth, and treating them identically wastes both budget and accuracy.</li>
+<li><strong>Routing by query type</strong>, a lot like the model-routing I've written about for cost. A factual lookup and an open-ended reasoning question don't need the same retrieval depth, and treating them identically wastes both budget and accuracy.</li>
 </ul>
 
 <div class="callout">
 <span class="callout-label">In practice</span>
-<p>In the workshops I run, teams consistently see a bigger accuracy jump from fixing chunking and adding a re-ranking step than from upgrading the model behind the pipeline — often by a wide margin, and at a fraction of the cost.</p>
+<p>In the workshops I run, teams consistently see a bigger accuracy jump from fixing chunking and adding a re-ranking step than from upgrading the model behind the pipeline, often by a wide margin and at a fraction of the cost.</p>
 </div>
 
 <h2>The question I now ask before any model swap</h2>
 
-<p>"Have you actually looked at the ten documents retrieval handed the model on your last five wrong answers?" Most teams haven't — they've read the wrong final output and assumed the model reasoned poorly, without checking what it was actually given to reason over. Once you make that a habit, a surprising number of "model problems" turn out to be a retrieval system quietly handing a good model a bad hand, every time.</p>
+<p>"Have you actually looked at the ten documents retrieval handed the model on your last five wrong answers?" Most teams haven't, they've read the wrong final output and assumed the model reasoned poorly, without checking what it was actually given to reason over. Once you make that a habit, a surprising number of "model problems" turn out to be a retrieval system quietly handing a good model a bad hand, every time.</p>
 
 </div>
 <div class="post-foot">
@@ -102,7 +102,7 @@
 <div class="post-card-body">
 <div class="post-meta"><span class="tag-pill">AI</span><span>November 11, 2025 &middot; 8 min read</span></div>
 <h3>How we cut AI running costs by 38% without making the output worse</h3>
-<p>Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.</p>
+<p>Benchmarking, routing and caching across four AI products. What actually moved the bill, and what didn't.</p>
 <span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
 </div>
 </a>

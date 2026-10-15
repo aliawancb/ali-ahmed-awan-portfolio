@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How we cut AI running costs by 38% without making the output worse — Ali Ahmed Awan</title>
-<meta name="description" content="Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.">
+<title>How we cut AI running costs by 38% without making the output worse · Ali Ahmed Awan</title>
+<meta name="description" content="Benchmarking, routing and caching across four AI products. What actually moved the bill, and what didn't.">
 <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
 <a href="index.html" class="back-link">&larr; All posts</a>
 <div class="eyebrow"><span>AI</span></div>
 <h1>How we cut AI running costs by 38% without making the output worse</h1>
-<p class="post-dek">Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.</p>
+<p class="post-dek">Benchmarking, routing and caching across four AI products. What actually moved the bill, and what didn't.</p>
 <div class="post-byline">
 <img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
 <span>Ali Ahmed Awan &middot; November 11, 2025 &middot; 8 min read</span>
@@ -38,25 +38,25 @@
 </div>
 <div class="post-body">
 
-<p>Running AI in production across FastRead.io, Myautobio, Clintwin/Medsim AI, and Formulai meant the model bill was the first cost line that scaled embarrassingly faster than revenue. The 38% reduction we eventually landed didn't come from one clever trick — it came from killing three assumptions the team had been making by default.</p>
+<p>Running AI in production across FastRead.io, Myautobio, Clintwin/Medsim AI, and Formulai meant the model bill was the first cost line that scaled embarrassingly faster than revenue. The 38% reduction we eventually landed didn't come from one clever trick. It came from killing three assumptions the team had been making by default.</p>
 
 <h2>Assumption one: the frontier model is the safe default</h2>
 
-<p>Defaulting every call to the most capable model feels like the risk-free choice — nobody gets blamed for "we used the best one." It's also the most expensive possible default, applied uniformly to tasks that range from "summarize this in one sentence" to "reason through a multi-step medical scenario." We benchmarked each real task in each product against smaller and mid-tier models specifically, not against a generic leaderboard, and found a large share of calls — classification, extraction, short rewrites — held quality within a threshold we'd pre-agreed on with a much cheaper model.</p>
+<p>Defaulting every call to the most capable model feels like the risk-free choice. Nobody gets blamed for "we used the best one." It's also the most expensive possible default, applied uniformly to tasks that range from "summarize this in one sentence" to "reason through a multi-step medical scenario." We benchmarked each real task in each product against smaller and mid-tier models specifically, not against a generic leaderboard, and found a large share of calls (classification, extraction, short rewrites) held quality within a threshold we'd pre-agreed on with a much cheaper model.</p>
 
 <h2>Assumption two: routing should be static</h2>
 
-<p>Once we knew which task types tolerated a cheaper model, the next mistake would have been hardcoding that mapping forever. Instead we built routing that considers task type and a confidence signal, falling back to a stronger model when the cheaper one's output looks uncertain — rather than a flat rule that would quietly degrade quality the day user behavior shifted even slightly from what we'd benchmarked.</p>
+<p>Once we knew which task types tolerated a cheaper model, the next mistake would have been hardcoding that mapping forever. Instead we built routing that considers task type and a confidence signal, falling back to a stronger model when the cheaper one's output looks uncertain, rather than a flat rule that would quietly degrade quality the day user behavior shifted even slightly from what we'd benchmarked.</p>
 
 <blockquote>Cheaper isn't the goal. Cheaper-without-the-user-noticing is the goal, and the gap between those two is entirely in how carefully you route, not in which model you pick.</blockquote>
 
 <h2>Assumption three: every call needs a fresh answer</h2>
 
-<p>A meaningful share of requests across the four products were structurally repetitive — the same classification on near-identical inputs, the same lookup phrased slightly differently. Caching at the right layer, not just literal string matches but semantically similar requests, removed a chunk of calls from the bill entirely without touching quality, because nothing was ever regenerated differently the second time — it just wasn't generated at all.</p>
+<p>A meaningful share of requests across the four products were structurally repetitive (the same classification on near-identical inputs, the same lookup phrased slightly differently). Caching at the right layer, not just literal string matches but semantically similar requests, removed a chunk of calls from the bill entirely without touching quality, because nothing was ever regenerated differently the second time. It just wasn't generated at all.</p>
 
 <div class="callout">
 <span class="callout-label">In practice</span>
-<p>Running costs dropped 38% across the portfolio, and output quality — measured against the same evaluation set we used before the change — held steady or improved, because the routing fallback caught the cases a cheaper model would have gotten wrong.</p>
+<p>Running costs dropped 38% across the portfolio, and output quality (measured against the same evaluation set we used before the change) held steady or improved, because the routing fallback caught the cases a cheaper model would have gotten wrong.</p>
 </div>
 
 <h2>What I'd check first on any new AI product</h2>
@@ -107,7 +107,7 @@
 <div class="post-card-body">
 <div class="post-meta"><span class="tag-pill">AI</span><span>September 18, 2025 &middot; 8 min read</span></div>
 <h3>RAG isn't a model problem, it's a retrieval problem</h3>
-<p>Swap the model all you want — if retrieval hands it the wrong paragraph, confidently, no amount of model quality fixes what happens next.</p>
+<p>Swap the model all you want, if retrieval hands it the wrong paragraph confidently, no amount of model quality fixes what happens next.</p>
 <span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
 </div>
 </a>
