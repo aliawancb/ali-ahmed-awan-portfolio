@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RAG isn't a model problem, it's a retrieval problem — Ali Ahmed Awan</title>
+<meta name="description" content="Teams spend weeks arguing about which model to put behind their RAG pipeline and an afternoon on the retrieval step that actually decides whether the model ever sees the right document.">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div id="top" class="site"><header class="site-header">
+<div class="wrap">
+<a href="../index.html" class="brand">
+<span class="brand-mark">AA<span></span></span>
+<span class="brand-name"><b>Ali Ahmed Awan</b><small>Product &middot; AI &middot; Process</small></span>
+</a>
+<nav aria-label="Primary" class="site-nav">
+<a href="../index.html#about">How I work</a>
+<a href="../index.html#services">Services</a>
+<a href="../index.html#work">Work</a>
+<a href="../index.html#training">AI training</a>
+<a href="index.html">Blog</a>
+<a href="../index.html#contact" class="cta">Let's talk</a>
+</nav>
+</div>
+</header>
+
+<article>
+<div class="post-hero">
+<a href="index.html" class="back-link">&larr; All posts</a>
+<div class="eyebrow"><span>AI</span></div>
+<h1>RAG isn't a model problem, it's a retrieval problem</h1>
+<p class="post-dek">Teams spend weeks arguing about which model to put behind their RAG pipeline and an afternoon on the retrieval step that actually decides whether the model ever sees the right document.</p>
+<div class="post-byline">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<span>Ali Ahmed Awan &middot; September 18, 2025 &middot; 8 min read</span>
+</div>
+</div>
+<div class="post-body">
+
+<p>In almost every AI-training session I've run for teams putting retrieval-augmented generation into production, the conversation starts in the wrong place: which model should sit at the end of the pipeline — Claude, GPT, Gemini. By the end of the session, we're almost always talking about something upstream of the model entirely, because that's reliably where the actual failures were happening.</p>
+
+<h2>Where the failures actually live</h2>
+
+<p>A RAG system has, roughly, three places to fail: the retrieval step finds the wrong (or an incomplete) set of documents, the model reasons poorly over documents that were actually correct, or the output is right but phrased in a way nobody trusts. In every production system I've debugged, the overwhelming majority of visible failures trace back to the first one — retrieval handed the model a plausible-looking but wrong or incomplete paragraph, and the model, doing exactly what it's supposed to do, reasoned confidently from bad input.</p>
+
+<blockquote>A great model reasoning over the wrong paragraph will produce a fluent, confident, wrong answer faster than a mediocre model would have. Model quality doesn't fix a retrieval problem — it makes a retrieval problem harder to notice.</blockquote>
+
+<h2>What actually improves retrieval, in order of how often it mattered</h2>
+
+<ul>
+<li><strong>Chunking that respects the document's real structure</strong>, not a fixed token count that slices a clause in half. Most of the "the model hallucinated a policy detail" complaints I've debugged were actually "the policy detail was split across two chunks and only one got retrieved."</li>
+<li><strong>Hybrid search, not pure semantic similarity.</strong> Exact terms — product names, account numbers, specific clause references — often need keyword matching that pure embedding similarity quietly deprioritizes in favor of "related-sounding" text.</li>
+<li><strong>Re-ranking before the model ever sees the candidates</strong>, so the five documents that actually reach the prompt are the five most relevant, not the five that happened to embed closest to the query.</li>
+<li><strong>Routing by query type</strong>, a lot like the model-routing I've written about for cost — a factual lookup and an open-ended reasoning question don't need the same retrieval depth, and treating them identically wastes both budget and accuracy.</li>
+</ul>
+
+<div class="callout">
+<span class="callout-label">In practice</span>
+<p>In the workshops I run, teams consistently see a bigger accuracy jump from fixing chunking and adding a re-ranking step than from upgrading the model behind the pipeline — often by a wide margin, and at a fraction of the cost.</p>
+</div>
+
+<h2>The question I now ask before any model swap</h2>
+
+<p>"Have you actually looked at the ten documents retrieval handed the model on your last five wrong answers?" Most teams haven't — they've read the wrong final output and assumed the model reasoned poorly, without checking what it was actually given to reason over. Once you make that a habit, a surprising number of "model problems" turn out to be a retrieval system quietly handing a good model a bad hand, every time.</p>
+
+</div>
+<div class="post-foot">
+<div class="post-author">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<div>
+<div class="name">Ali Ahmed Awan</div>
+<div class="role">Product leader &amp; AI builder &middot; <a href="../index.html#contact">Get in touch</a></div>
+</div>
+</div>
+</div>
+</article>
+
+<section class="more-posts">
+<h2>More from the blog</h2>
+<div class="post-grid">
+<a class="post-card" href="benchmarking-llms-for-production.html">
+<div class="post-card-top" style="background:#0B1B2B;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#FFB020;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B1B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="4" height="8" rx="1"></rect><rect x="10" y="7" width="4" height="13" rx="1"></rect><rect x="16" y="3" width="4" height="17" rx="1"></rect></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">AI</span><span>March 3, 2026 &middot; 9 min read</span></div>
+<h3>Benchmarking LLMs for production: what the leaderboards don't tell you</h3>
+<p>Public leaderboards rank models on tasks that look nothing like yours. Here's how I actually evaluate Claude, OpenAI, and Gemini for production use.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="what-founding-taught-me.html">
+<div class="post-card-top" style="background:#EAEFFF;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#2D5BFF;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">Leadership</span><span>January 10, 2026 &middot; 7 min read</span></div>
+<h3>What founding Ovela taught me that ten years of product management didn't</h3>
+<p>Product management teaches you how to make a decision well. Founding teaches you what it feels like when there's nobody above you to catch the ones you get wrong.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="cutting-ai-running-costs-38-percent.html">
+<div class="post-card-top" style="background:#0B1B2B;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#FFB020;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B1B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">AI</span><span>November 11, 2025 &middot; 8 min read</span></div>
+<h3>How we cut AI running costs by 38% without making the output worse</h3>
+<p>Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+</div>
+</section>
+<footer class="site-footer">
+<div class="wrap">
+<span>&copy; 2026 Ali Ahmed Awan &middot; Building products that matter, from Lahore</span>
+<a href="#top">Back to top &uarr;</a>
+</div>
+</footer>
+</div>
+</body>
+</html>

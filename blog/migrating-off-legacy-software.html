@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Migrating off legacy software without breaking the business that runs on it — Ali Ahmed Awan</title>
+<meta name="description" content="Tribal Health's scheduling, onboarding, and billing all ran on a Salesforce setup nobody wanted to touch, for the obvious reason: touching it was how you broke payroll. Here's how a four-month migration survived that fear.">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div id="top" class="site"><header class="site-header">
+<div class="wrap">
+<a href="../index.html" class="brand">
+<span class="brand-mark">AA<span></span></span>
+<span class="brand-name"><b>Ali Ahmed Awan</b><small>Product &middot; AI &middot; Process</small></span>
+</a>
+<nav aria-label="Primary" class="site-nav">
+<a href="../index.html#about">How I work</a>
+<a href="../index.html#services">Services</a>
+<a href="../index.html#work">Work</a>
+<a href="../index.html#training">AI training</a>
+<a href="index.html">Blog</a>
+<a href="../index.html#contact" class="cta">Let's talk</a>
+</nav>
+</div>
+</header>
+
+<article>
+<div class="post-hero">
+<a href="index.html" class="back-link">&larr; All posts</a>
+<div class="eyebrow"><span>Process</span></div>
+<h1>Migrating off legacy software without breaking the business that runs on it</h1>
+<p class="post-dek">Tribal Health's scheduling, onboarding, and billing all ran on a Salesforce setup nobody wanted to touch, for the obvious reason: touching it was how you broke payroll. Here's how a four-month migration survived that fear.</p>
+<div class="post-byline">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<span>Ali Ahmed Awan &middot; March 5, 2025 &middot; 7 min read</span>
+</div>
+</div>
+<div class="post-body">
+
+<p>When we took on modernizing Tribal Health's operations, the legacy Salesforce setup was expensive, slow, and universally disliked — and also the thing every paycheck, every shift assignment, and every onboarding flow quietly depended on. Nobody disputed that it needed to go. Everybody was afraid, reasonably, of what happened in the gap between turning it off and the new platform being fully trustworthy.</p>
+
+<h2>The real risk was never the destination</h2>
+
+<p>Migration projects get planned like the risk is "will the new system work." In practice, the new system working in isolation is the easy 80%. The dangerous 20% is the weeks or months where both systems are partially true at once — where a schedule change made in the old system hasn't propagated to the new one yet, or a user's record exists in both places with two different answers to the same question. That gap is where a healthcare staffing business can genuinely hurt real people: a shift that doesn't get covered, a credential that doesn't carry over correctly.</p>
+
+<blockquote>Nobody's business breaks because the new platform is bad. It breaks because for a while, there are two sources of truth, and nobody agreed in advance which one wins.</blockquote>
+
+<h2>What actually made the four months survivable</h2>
+
+<ul>
+<li><strong>One explicit source of truth at every point in the migration</strong>, written down and communicated to the whole operations team — never "check both systems," always a specific, named answer for which one was authoritative that week.</li>
+<li><strong>Migrating by function, not by date.</strong> Scheduling moved as a complete, tested unit before onboarding started moving, rather than a single flag-day cutover across everything at once.</li>
+<li><strong>A rollback plan for each function</strong>, treated as seriously as the migration plan itself — not a footnote, a tested path back to the old system if the new one's early weeks surfaced a problem we hadn't caught.</li>
+<li><strong>The operations team in the room from week one</strong>, not informed after the fact — they were the ones who'd notice a scheduling edge case the migration plan hadn't considered, long before it reached a real shift.</li>
+</ul>
+
+<div class="callout">
+<span class="callout-label">In practice</span>
+<p>The migration took four months and shipped AI-powered scheduling, onboarding, and a resume parser on the new platform — saving roughly $800k a year, with task completion rising from 31% to 68%, without a single week where payroll or shift coverage broke.</p>
+</div>
+
+<h2>What I'd check before any legacy migration now</h2>
+
+<p>Not "is the new system ready" — ask instead: for every single day of the migration, can everyone on the operations team answer, without checking two places, which system is the truth right now? If that answer is ever fuzzy, the migration plan isn't finished yet, no matter how solid the new platform is in isolation.</p>
+
+</div>
+<div class="post-foot">
+<div class="post-author">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<div>
+<div class="name">Ali Ahmed Awan</div>
+<div class="role">Product leader &amp; AI builder &middot; <a href="../index.html#contact">Get in touch</a></div>
+</div>
+</div>
+</div>
+</article>
+
+<section class="more-posts">
+<h2>More from the blog</h2>
+<div class="post-grid">
+<a class="post-card" href="benchmarking-llms-for-production.html">
+<div class="post-card-top" style="background:#0B1B2B;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#FFB020;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B1B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="4" height="8" rx="1"></rect><rect x="10" y="7" width="4" height="13" rx="1"></rect><rect x="16" y="3" width="4" height="17" rx="1"></rect></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">AI</span><span>March 3, 2026 &middot; 9 min read</span></div>
+<h3>Benchmarking LLMs for production: what the leaderboards don't tell you</h3>
+<p>Public leaderboards rank models on tasks that look nothing like yours. Here's how I actually evaluate Claude, OpenAI, and Gemini for production use.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="what-founding-taught-me.html">
+<div class="post-card-top" style="background:#EAEFFF;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#2D5BFF;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"></path><path d="M5 12l7-7 7 7"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">Leadership</span><span>January 10, 2026 &middot; 7 min read</span></div>
+<h3>What founding Ovela taught me that ten years of product management didn't</h3>
+<p>Product management teaches you how to make a decision well. Founding teaches you what it feels like when there's nobody above you to catch the ones you get wrong.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="cutting-ai-running-costs-38-percent.html">
+<div class="post-card-top" style="background:#0B1B2B;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#FFB020;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B1B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">AI</span><span>November 11, 2025 &middot; 8 min read</span></div>
+<h3>How we cut AI running costs by 38% without making the output worse</h3>
+<p>Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+</div>
+</section>
+<footer class="site-footer">
+<div class="wrap">
+<span>&copy; 2026 Ali Ahmed Awan &middot; Building products that matter, from Lahore</span>
+<a href="#top">Back to top &uarr;</a>
+</div>
+</footer>
+</div>
+</body>
+</html>
