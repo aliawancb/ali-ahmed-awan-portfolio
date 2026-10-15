@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we cut AI running costs by 38% without making the output worse — Ali Ahmed Awan</title>
+<meta name="description" content="Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div id="top" class="site"><header class="site-header">
+<div class="wrap">
+<a href="../index.html" class="brand">
+<span class="brand-mark">AA<span></span></span>
+<span class="brand-name"><b>Ali Ahmed Awan</b><small>Product &middot; AI &middot; Process</small></span>
+</a>
+<nav aria-label="Primary" class="site-nav">
+<a href="../index.html#about">How I work</a>
+<a href="../index.html#services">Services</a>
+<a href="../index.html#work">Work</a>
+<a href="../index.html#training">AI training</a>
+<a href="index.html">Blog</a>
+<a href="../index.html#contact" class="cta">Let's talk</a>
+</nav>
+</div>
+</header>
+
+<article>
+<div class="post-hero">
+<a href="index.html" class="back-link">&larr; All posts</a>
+<div class="eyebrow"><span>AI</span></div>
+<h1>How we cut AI running costs by 38% without making the output worse</h1>
+<p class="post-dek">Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.</p>
+<div class="post-byline">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<span>Ali Ahmed Awan &middot; November 11, 2025 &middot; 8 min read</span>
+</div>
+</div>
+<div class="post-body">
+
+<p>Running AI in production across FastRead.io, Myautobio, Clintwin/Medsim AI, and Formulai meant the model bill was the first cost line that scaled embarrassingly faster than revenue. The 38% reduction we eventually landed didn't come from one clever trick — it came from killing three assumptions the team had been making by default.</p>
+
+<h2>Assumption one: the frontier model is the safe default</h2>
+
+<p>Defaulting every call to the most capable model feels like the risk-free choice — nobody gets blamed for "we used the best one." It's also the most expensive possible default, applied uniformly to tasks that range from "summarize this in one sentence" to "reason through a multi-step medical scenario." We benchmarked each real task in each product against smaller and mid-tier models specifically, not against a generic leaderboard, and found a large share of calls — classification, extraction, short rewrites — held quality within a threshold we'd pre-agreed on with a much cheaper model.</p>
+
+<h2>Assumption two: routing should be static</h2>
+
+<p>Once we knew which task types tolerated a cheaper model, the next mistake would have been hardcoding that mapping forever. Instead we built routing that considers task type and a confidence signal, falling back to a stronger model when the cheaper one's output looks uncertain — rather than a flat rule that would quietly degrade quality the day user behavior shifted even slightly from what we'd benchmarked.</p>
+
+<blockquote>Cheaper isn't the goal. Cheaper-without-the-user-noticing is the goal, and the gap between those two is entirely in how carefully you route, not in which model you pick.</blockquote>
+
+<h2>Assumption three: every call needs a fresh answer</h2>
+
+<p>A meaningful share of requests across the four products were structurally repetitive — the same classification on near-identical inputs, the same lookup phrased slightly differently. Caching at the right layer, not just literal string matches but semantically similar requests, removed a chunk of calls from the bill entirely without touching quality, because nothing was ever regenerated differently the second time — it just wasn't generated at all.</p>
+
+<div class="callout">
+<span class="callout-label">In practice</span>
+<p>Running costs dropped 38% across the portfolio, and output quality — measured against the same evaluation set we used before the change — held steady or improved, because the routing fallback caught the cases a cheaper model would have gotten wrong.</p>
+</div>
+
+<h2>What I'd check first on any new AI product</h2>
+
+<ul>
+<li>Which tasks are you defaulting to your best model for, out of caution rather than evidence?</li>
+<li>Does your routing have a real fallback signal, or a fixed rule that will quietly rot as usage shifts?</li>
+<li>How much of your traffic is structurally repetitive, and is anything actually catching that before it hits a paid call?</li>
+</ul>
+
+<p>None of this required a model upgrade or a vendor switch. It required measuring what each task actually needed, instead of defaulting every task to what the hardest task needed.</p>
+
+</div>
+<div class="post-foot">
+<div class="post-author">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<div>
+<div class="name">Ali Ahmed Awan</div>
+<div class="role">Product leader &amp; AI builder &middot; <a href="../index.html#contact">Get in touch</a></div>
+</div>
+</div>
+</div>
+</article>
+
+<section class="more-posts">
+<h2>More from the blog</h2>
+<div class="post-grid">
+<a class="post-card" href="benchmarking-llms-for-production.html">
+<div class="post-card-top" style="background:#0B1B2B;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#FFB020;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B1B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="4" height="8" rx="1"></rect><rect x="10" y="7" width="4" height="13" rx="1"></rect><rect x="16" y="3" width="4" height="17" rx="1"></rect></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">AI</span><span>March 3, 2026 &middot; 9 min read</span></div>
+<h3>Benchmarking LLMs for production: what the leaderboards don't tell you</h3>
+<p>Public leaderboards rank models on tasks that look nothing like yours. Here's how I actually evaluate Claude, OpenAI, and Gemini for production use.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="free-trial-or-freemium.html">
+<div class="post-card-top" style="background:#FFF3D6;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#0B1B2B;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.45 1.1 1.2 1.1 2.2h5c0-1 .5-1.75 1.1-2.2A6 6 0 0 0 12 3z"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">Growth</span><span>July 30, 2025 &middot; 7 min read</span></div>
+<h3>Free trial or freemium? What doubling paid conversion taught me</h3>
+<p>Lessons from moving a lifestyle app to freemium and subscriptions — and why onboarding mattered more than price.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="dont-copy-paste-your-playbook.html">
+<div class="post-card-top" style="background:#FFF3D6;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#0B1B2B;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">Markets</span><span>April 17, 2025 &middot; 6 min read</span></div>
+<h3>Don't copy-paste your playbook into a new market</h3>
+<p>What launching a car marketplace in the UAE and Saudi Arabia taught me about local buying behaviour.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+</div>
+</section>
+<footer class="site-footer">
+<div class="wrap">
+<span>&copy; 2026 Ali Ahmed Awan &middot; Building products that matter, from Lahore</span>
+<a href="#top">Back to top &uarr;</a>
+</div>
+</footer>
+</div>
+</body>
+</html>

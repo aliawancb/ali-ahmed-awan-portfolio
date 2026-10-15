@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchmarking LLMs for production: what the leaderboards don't tell you — Ali Ahmed Awan</title>
+<meta name="description" content="A model that tops a public leaderboard can still be the wrong choice for your task. Running Claude, OpenAI, and Gemini side by side across real product workloads taught me to stop trusting a single number.">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<div id="top" class="site"><header class="site-header">
+<div class="wrap">
+<a href="../index.html" class="brand">
+<span class="brand-mark">AA<span></span></span>
+<span class="brand-name"><b>Ali Ahmed Awan</b><small>Product &middot; AI &middot; Process</small></span>
+</a>
+<nav aria-label="Primary" class="site-nav">
+<a href="../index.html#about">How I work</a>
+<a href="../index.html#services">Services</a>
+<a href="../index.html#work">Work</a>
+<a href="../index.html#training">AI training</a>
+<a href="index.html">Blog</a>
+<a href="../index.html#contact" class="cta">Let's talk</a>
+</nav>
+</div>
+</header>
+
+<article>
+<div class="post-hero">
+<a href="index.html" class="back-link">&larr; All posts</a>
+<div class="eyebrow"><span>AI</span></div>
+<h1>Benchmarking LLMs for production: what the leaderboards don't tell you</h1>
+<p class="post-dek">A model that tops a public leaderboard can still be the wrong choice for your task. Running Claude, OpenAI, and Gemini side by side across real product workloads taught me to stop trusting a single number.</p>
+<div class="post-byline">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<span>Ali Ahmed Awan &middot; March 3, 2026 &middot; 9 min read</span>
+</div>
+</div>
+<div class="post-body">
+
+<p>Public leaderboards answer a question nobody building a real product actually asked: which model is best, on average, across a broad test set designed for comparability rather than relevance. Routing production traffic across Claude, OpenAI, and Gemini for four different products taught me that the leaderboard rank and the right choice for a specific task correlate a lot less than the marketing around each new release would suggest.</p>
+
+<h2>Why the public number misleads you</h2>
+
+<p>A leaderboard score is an average across tasks you don't run, weighted in a way you don't control, on a cutoff of training data you can't inspect. A model can lead the aggregate and still underperform specifically on your task — structured extraction from messy, even handwritten, input, say — because that narrow skill isn't weighted heavily in whatever benchmark produced the headline number.</p>
+
+<blockquote>The leaderboard tells you which model is generally strong. It cannot tell you which model is strong at the one thing you're actually going to ask it to do, millions of times, in production.</blockquote>
+
+<h2>What an actual production benchmark needs</h2>
+
+<ul>
+<li><strong>Your real inputs, not a public test set.</strong> We evaluate the resume parser against genuinely messy, inconsistent, sometimes handwritten source documents — not clean sample resumes — because that's the actual distribution it has to survive.</li>
+<li><strong>A task-specific scoring rubric</strong>, built with the domain expert who'd judge the output manually, not a generic correctness score that misses what "good" means for that specific task.</li>
+<li><strong>Cost and latency in the same table as quality</strong>, because a 2% quality edge that costs four times as much per call, or takes three times as long, is not obviously the right production choice — it's a trade-off that needs to be made explicitly, by someone who owns the bill.</li>
+<li><strong>Re-running the benchmark on every model update</strong>, because a quiet model refresh can change behavior on your specific task even when the public benchmark barely moves.</li>
+</ul>
+
+<h2>What this actually looked like</h2>
+
+<p>For the resume parser, the model that led public benchmarks at the time was noticeably worse on our specific task than a competitor — it over-corrected ambiguous handwriting into plausible-looking but wrong text, which is a worse failure mode for compliance documents than visibly failing to parse. The model we actually shipped with wasn't the aggregate leader. It was the one that failed more honestly on the inputs that mattered.</p>
+
+<div class="callout">
+<span class="callout-label">In practice</span>
+<p>Across four products we now run a standing task-specific eval set per model family, re-scored on every update, which is also the backbone of the routing system that helped cut AI running costs 38% without a drop in output quality.</p>
+</div>
+
+<h2>What I'd tell a team about to pick "the best model"</h2>
+
+<p>Stop asking which model is best. Ask which model is best at the narrow, specific, slightly boring task you're actually going to run millions of times — and build the five-input test that answers that, before you build the five-hundred-slide deck comparing leaderboard scores. The deck will be more impressive. The test will be the thing that's actually right.</p>
+
+</div>
+<div class="post-foot">
+<div class="post-author">
+<img src="../assets/hero.jpg" alt="Ali Ahmed Awan">
+<div>
+<div class="name">Ali Ahmed Awan</div>
+<div class="role">Product leader &amp; AI builder &middot; <a href="../index.html#contact">Get in touch</a></div>
+</div>
+</div>
+</div>
+</article>
+
+<section class="more-posts">
+<h2>More from the blog</h2>
+<div class="post-grid">
+<a class="post-card" href="cutting-ai-running-costs-38-percent.html">
+<div class="post-card-top" style="background:#0B1B2B;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#FFB020;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0B1B2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13h6l-1 8 8-10h-6z"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">AI</span><span>November 11, 2025 &middot; 8 min read</span></div>
+<h3>How we cut AI running costs by 38% without making the output worse</h3>
+<p>Benchmarking, routing and caching across four AI products — what actually moved the bill, and what didn't.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="free-trial-or-freemium.html">
+<div class="post-card-top" style="background:#FFF3D6;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#0B1B2B;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.45 1.1 1.2 1.1 2.2h5c0-1 .5-1.75 1.1-2.2A6 6 0 0 0 12 3z"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">Growth</span><span>July 30, 2025 &middot; 7 min read</span></div>
+<h3>Free trial or freemium? What doubling paid conversion taught me</h3>
+<p>Lessons from moving a lifestyle app to freemium and subscriptions — and why onboarding mattered more than price.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a class="post-card" href="dont-copy-paste-your-playbook.html">
+<div class="post-card-top" style="background:#FFF3D6;"><span aria-hidden="true" style="width:48px;height:48px;border-radius:12px;background:#0B1B2B;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"></path></svg></span></div>
+<div class="post-card-body">
+<div class="post-meta"><span class="tag-pill">Markets</span><span>April 17, 2025 &middot; 6 min read</span></div>
+<h3>Don't copy-paste your playbook into a new market</h3>
+<p>What launching a car marketplace in the UAE and Saudi Arabia taught me about local buying behaviour.</p>
+<span class="read-more">Read the post<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+</div>
+</section>
+<footer class="site-footer">
+<div class="wrap">
+<span>&copy; 2026 Ali Ahmed Awan &middot; Building products that matter, from Lahore</span>
+<a href="#top">Back to top &uarr;</a>
+</div>
+</footer>
+</div>
+</body>
+</html>
