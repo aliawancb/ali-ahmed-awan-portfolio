@@ -1,0 +1,51 @@
+# Ali Ahmed Awan
+
+> Product leader and AI builder based in Lahore, Pakistan. Builds AI-driven products, leads product teams, and writes about product strategy, AI in production, growth, and leadership.
+
+Ali Ahmed Awan has 10+ years leading products across Pakistan, the UAE, Saudi Arabia, West Africa, and the US. He leads Xcellerant Ventures' AI product portfolio (FastRead.io, Myautobio, Clintwin/Medsim AI, Formulai), founded Ovela Health (medical travel to Pakistan), and previously led product at The ENTERTAINER, PakWheels/ArabWheels, Tribal Health, Hexkode, and Vodlix. He also runs hands-on AI training workshops for business teams.
+
+## Site
+
+- [Home](https://aliahmedawan.me/): bio, services, case studies, AI training, contact
+- [Blog](https://aliahmedawan.me/blog/): 21 posts on product strategy, AI in production, growth, and leadership, since 2023
+
+## Blog posts
+
+### 2026
+
+- [Benchmarking LLMs for production: what the leaderboards don't tell you](https://aliahmedawan.me/blog/benchmarking-llms-for-production.html): Public leaderboards rank models on tasks that look nothing like yours. Here's how I actually evaluate Claude, OpenAI, and Gemini for production use.
+- [What founding Ovela taught me that ten years of product management didn't](https://aliahmedawan.me/blog/what-founding-taught-me.html): Product management teaches you how to make a decision well. Founding teaches you what it feels like when there's nobody above you to catch the ones you get wrong.
+
+### 2025
+
+- [How we cut AI running costs by 38% without making the output worse](https://aliahmedawan.me/blog/cutting-ai-running-costs-38-percent.html): Benchmarking, routing and caching across four AI products. What actually moved the bill, and what didn't.
+- [RAG isn't a model problem, it's a retrieval problem](https://aliahmedawan.me/blog/rag-is-a-retrieval-problem.html): Swap the model all you want, if retrieval hands it the wrong paragraph confidently, no amount of model quality fixes what happens next.
+- [Free trial or freemium? What doubling paid conversion taught me](https://aliahmedawan.me/blog/free-trial-or-freemium.html): Lessons from moving a lifestyle app to freemium and subscriptions, and why onboarding mattered more than price.
+- [Why concierge beats self-serve for high-stakes decisions](https://aliahmedawan.me/blog/concierge-beats-self-serve.html): Self-serve won every growth argument I made for years, until I built a product where removing the human was the thing actively costing us trust.
+- [Don't copy-paste your playbook into a new market](https://aliahmedawan.me/blog/dont-copy-paste-your-playbook.html): What launching a car marketplace in the UAE and Saudi Arabia taught me about local buying behaviour.
+- [Migrating off legacy software without breaking the business that runs on it](https://aliahmedawan.me/blog/migrating-off-legacy-software.html): The real risk in a legacy migration was never the new platform failing. It was the four months in between, where both systems had to be true at once.
+- [What managing a 17-person AI team taught me about letting go](https://aliahmedawan.me/blog/managing-a-17-person-team.html): Scaling from a handful of engineers to a 17-person AI product team meant unlearning the habits that made me good at shipping, personally.
+
+### 2024
+
+- [Building a virtual patient: what medical simulation taught me about trust in AI](https://aliahmedawan.me/blog/virtual-patients-and-trust-in-ai.html): Clintwin/Medsim AI isn't a chatbot with a medical skin on it. The entire design brief was about what happens when a model is convincing but wrong.
+- [Agile stopped being about being agile](https://aliahmedawan.me/blog/agile-stopped-being-about-being-agile.html): Most teams running 'agile' are running the ceremony with the actual agility quietly removed. Here's how to tell, and what to rebuild instead.
+- [One number, one portfolio: picking a north star across four products](https://aliahmedawan.me/blog/one-north-star-four-products.html): Four AI products, four different markets, one portfolio strategy. The hard part isn't picking a metric per product, it's resisting the urge to.
+- [Your strategy is only as good as your execution](https://aliahmedawan.me/blog/strategy-is-as-good-as-execution.html): The decision to go freemium took an afternoon. Making it work took a rebuilt product, forty interviews, and a year.
+- [What I look for when hiring a PM who's never been one](https://aliahmedawan.me/blog/hiring-a-first-time-pm.html): The best PM hire I ever made had never held the title. The signal I was actually looking for doesn't show up on a resume at all.
+- [Stop scoring your roadmap. Start arguing about strategy.](https://aliahmedawan.me/blog/strategy-over-scoring-models.html): Scoring frameworks don't resolve prioritization debates. They just launder someone's opinion through a formula that looks objective.
+
+### 2023
+
+- [Why 40 customer interviews beat one survey of 4,000 people](https://aliahmedawan.me/blog/40-interviews-beat-one-survey.html): Surveys scale. Interviews don't. For the decisions that actually matter, that trade-off runs the wrong way more often than product teams admit.
+- [Product-led growth only works if the product actually leads](https://aliahmedawan.me/blog/product-led-growth-needs-a-product-that-leads.html): PLG became a label teams reach for before they've done the one thing it actually requires: letting the product sell itself.
+- [What shipping an MVP in under 90 days actually requires you to cut](https://aliahmedawan.me/blog/shipping-mvp-in-90-days.html): The hard part of a 90-day MVP was never the 90 days. It was agreeing, out loud, on what we were willing to be embarrassed about at launch.
+- [Design thinking works better as a loop than a funnel](https://aliahmedawan.me/blog/design-thinking-is-a-loop.html): The five stages of design thinking were never meant to run once, start to finish. Treating them that way is where most teams get stuck.
+- [From business analyst to product manager: the move nobody tells you how to make](https://aliahmedawan.me/blog/from-business-analyst-to-product-manager.html): Nobody hands you a product manager title. You just start doing the job, badly at first, until someone notices you already are one.
+- [The CIRCLES method isn't just an interview trick](https://aliahmedawan.me/blog/circles-method-beyond-interviews.html): The interview-prep framework everyone memorizes and almost nobody uses on the job, until you actually try it.
+
+## Contact
+
+- Email: ali.ahmed.awan71@gmail.com
+- LinkedIn: https://www.linkedin.com/in/aliahmedawan
+- Based in: Lahore, Pakistan, working worldwide
