@@ -1,5 +1,12 @@
 [build]
   publish = "."
+  command = "python3 scripts/sync-seo.py"
+
+# Keep the .html URLs that canonical tags and the sitemap already use.
+# Pretty URLs rewrites internal links to the extensionless form on the way out,
+# which is how /blog/slug and /blog/slug.html both ended up as 200s.
+[build.processing.html]
+  pretty_urls = false
 
 [[headers]]
   for = "/assets/fonts/*"
