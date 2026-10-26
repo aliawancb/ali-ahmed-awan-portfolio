@@ -7,6 +7,7 @@ Ali Ahmed Awan has 10+ years leading products across Pakistan, the UAE, Saudi Ar
 ## Site
 
 - [Home](https://aliahmedawan.me/): bio, services, case studies, AI training, contact
+- [AI training](https://aliahmedawan.me/ai-training.html): hands-on workshops for business teams, from product squads to finance and accounting, including an AI for Managers and Leaders programme. Teams leave knowing where AI fits their work, what is safe to put into a public tool, how to prompt and check answers in Claude, ChatGPT and Gemini, and how to turn one good result into a repeatable process. Duration, format, price and client names are not published on the site yet.
 - [Blog](https://aliahmedawan.me/blog/): 21 posts on product strategy, AI in production, growth, and leadership, since 2023
 
 ## Blog posts
